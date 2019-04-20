@@ -1,0 +1,81 @@
+ 	19.4.2019
+Vaatimusmäärittelyn johtaminen käyttötapauksista
+Tämän dokumentin tuloksena johdetaan seuraava asiakirja, joka on nimeltään: Sprint Backlog_Digiprojekti.xlsx
+
+Ohjelmiston vaatimusmäärittely johdetaan seuraavasti: 
+	Perustuen kehitysryhmän aikaisempaan kokemukseen ohjelmiston suunnittelusta ja vaatimusmäärittelystä
+	Lainsäädäntöön elintarvikelaki
+	Yleisiin määräyksiin elintarvikkeiden säilytyslämpötiloista
+	Käyttäjien haastatteluihin, joista on johdettu ohjelmiston käyttötapaukset
+Käyttötapaukset jaetaan seuraaviin osiin:
+	Sovelluksen käyttäjät: 	userID
+	Sovelluksen pääkäyttäjät:	adminID
+	Sovelluksen kehitysryhmä: 	devID
+Huom! Ohjelmiston vaatimusmäärittelyt priorisoidaan tärkeysjärjestykseen siten, että viisi ensimmäistä vaatimusmääritystä on tärkeysjärjestyksen kärjessä. Tärkeysjärjestys ei kuitenkaan merkitse valmistumisjärjestystä, sillä jotkin tärkeät ohjelmiston osat on testauksen kannalta paras toteuttaa viimeisenä.
+
+Sovelluksen kehitysryhmä:
+Lähde	Vaatimus	Ratkaisu
+devID 17	Admin panel vaatii käyttäjältä käyttöoikeudet	Käyttöoikeudet todennetaan kirjautumalla palveluun käyttäjätunnuksella ja salasanalla.
+devID 14	Visual Temp sovellus sisältää kaksi käyttöliittymää	Palvelun käyttöön valmistetaan kaksi käyttöliittymää: Mobiili ja desktop versiot
+devID 12	Merkitty yksilöivä tunnus	Jokaisella käyttäjällä on yksilöity tunnus (id), joka viittaa todelliseen henkilöön, admin oikeuksilla varustetulla henkilöllä on oikeus lisätä, muuttaa ja poistaa henkilötietoja
+devID 6	Mahdollisuus hakea tietoja sijainnista riippumatta	Admin paneeliin voi kirjautua myös työpaikan tietoverkon ulkopuolelta, myös mobiililaitteella.
+devID 7	Moduläärinen rakenne	Ohjelmisto koostuu itsenäisistä ja toisistaan riippumattomista osista, jotka on linkitetty toisiinsa käyttöliittymän välityksellä.
+devID 8	Ohjelmiston kehittämiseksi valittavan sovellusympäristön soveltuvuus laitteiston skaalautuvuuteen	Sovellusympäristö (stack) ja siinä käytettävät ohjelmistokielet ovat laitteistoriippumattomia ja niitä tukevat useimmat käytössä olevat selaimet 
+devID 4	Keskitetty tietokanta	Kaikki tiedot löytyvät yhdestä tietokannasta
+devID 9	Yhdeksän kappaletta laitteita	Sovellus on räätälöitävissä käyttötarpeen mukaan, laitteita voi lisätä, muokata ja poistaa tietokannasta
+devID 5	Nopea haku tietokannasta	Käytettävä tietokantaohjelmisto on kevyt ja se sijaitsee samalla palvelimella kuin palvelun back-end tiedostot
+devID 3	Edullinen ja muokattavissa	Sovellus on kilpailijoiden tuotteisiin verrattuna huomattavan kevytrakenteinen ja rakeenteeltaan ketterä, mikä tuo kilpailuetua.
+devID 15	Ensimmäinen sovellus lämpötilojen kirjaamiseen	Kaksi sovellusversiota
+devID 16	Admin panel on tarkoitettu tallennettujen tietojen hakuun tietokannasta ja tietojen mahdolliseen editoimiseen	Kaksi sovellusversiota
+devID 2	Kirjaus suoraan sovelluksesta	Sovellus lähettää tiedot ’lähetä’ painikkeella
+devID 10	Lämpötilat tulee merkitä rekisteriin jokaisena työpäivänä	Sovellus tarkistaa käytössä olevan päivämäärän ja merkitsee sen tietokantaan
+devID 1	Omavalvonnaksi kutsutaan toimijan omaa järjestelmää	Sovellus myydään kokonaan tai lisensoidaan asiakkaalle 
+devID 13	Seija ei tiedä tiedostopolkua	Tiedostopolulle ei löydy tarvetta, uusi järjestelmä korvaa vanhan käytössä olevan
+devID 11	Jokaisessa laitteessa on digitaalinen näyttö, joka ilmaisee kussakin laitteessa olevan sen hetkisen lämpötilan	Laitteen ilmoittama lämpötila-arvo pyöristetään lähimpään kokonaislukuun
+
+
+
+
+  
+
+
+Sovelluksen pääkäyttäjät
+Lähde	Vaatimus	Ratkaisu
+adminID 2	Käyttäjien roolitus ja roolien määrittäminen järjestelmään	Työn- ja tehtävänkuvat päivitetään yleisesti ja roolit jaetaan niiden mukaisesti
+adminID 4	Laitteet on ryhmitelty sen mukaisesti, kuka laitteita käyttää	Laitteet nimetään yksilöllisellä tunnuksella ja ne ryhmitellään työn- ja tehtävänkuvauksissa määriteltyihin ryhmiin
+adminID 7	*Pakastin, jossa säilytetään leivonnaisia: -21 astetta (vähimmäislämpötila - 18)
+*Pakastin, jossa säilytetään käsitavaroita:  -19 astetta (vähimmäislämpötila -18)
+*Kylmäkaappi, joka on käsitavarakaappi, mutta jossa säilytetään myös helposti pilaantuvia elintarvikkeita +4 astetta (vähimmäislämpötila +6)
+*Vetokaappi, jossa säilytetään esivalmistettuja tuotteita, myös herkästi pilaantuvia +5 astetta (vähimmäislämpötila +6)
+	Jokaisella käyttäjällä on yksilöity tunnus (id), joka viittaa todelliseen henkilöön, admin oikeuksilla varustetulla henkilöllä on oikeus lisätä, muuttaa ja poistaa henkilötietoja
+adminID 12	Mitä jos kirjauksia on jäänyt tekemättä	Sovellus sisältää jokaiselle laitteelle oman oletusarvon, joka on muotoa hidden, jos laitteen lämpötilaa ei lähetetä määrätyllä kellonaikajaksolla, niin lähetetään oletusarvo
+adminID 8	Siinä tapauksessa, että laite ei saavuta sille asetettua arvoa, Seija merkitsee lomakkeeseen todellisen lämpötilan ja erilliseen sarakkeeseen tulee huomautus siitä, että kylmälaite ei saavuta sille asetettuja lämpötila-arvoja	Ohjelmisto koostuu itsenäisistä ja toisistaan riippumattomista osista, jotka on linkitetty toisiinsa käyttöliittymän välityksellä.
+adminID 11	Hyvä nyt näen ovatko kaikki suorittaneet kirjaukset sovitulla tavalla	Kirjaukset suoritetaan käyttöliittymässä määritetyllä tavalla, käyttäjä- ja laitetunnukset ovat ykilöllisiä ja siten jäljitettävissä 
+adminID 14	Onko tilapäisellä henkilökunnalla (extra) mahdollisuus kirjata tietoja, usein syntyy tilanteita, jossa vakituista henkilökuntaa ei ole paikalla 	Jokaiseen laiteryhmään lisätään käyttäjä ’extra’
+adminID 15	Oiva tarkastajalta menee paljon aikaa hänen selatessa kansiossa olevia lomakkeita, niiden ollessa pahimmillaan väärässä järjestyksessä	Järjestelmä suodattaa nopeasti listauksen merkinnöistä, jotka sisältävät: Normaalit lämpötilat, merkitsemättömät lämpötilat, liian korkeat lämpötilat tai laiterikot
+adminID 13	Haluan käyttäjätilin myös lämpötilojen kirjaukseen, jotta voin itse suorittaa niitä, esimerkiksi sairauslomien varalta	Jokaiseen laiteryhmään lisätään käyttäjä esimies, jolla on yksilöity tunnus (sama tunnus kuin admin panelissa)
+adminID 1	Tiedot käytettävistä tarvikkeista ja kemikaalista	Tämä kuuluu omavalvonnan moduuliin siivous ja puhtaanapito, toimintaa ei oteta mukaan lämpötilojen valvontaan
+adminID 9	Lista on tyypillisesti kuukausikohtainen	Lämpötilat merkitään aikaleimalla, joka on muotoa vvvv.kk.pp hh.mm.ss
+Kirjaaminen suoritetaan kronologisesti ilman kuukausikohtaista erittelyä, haku Admin panelista voidaan suorittaa tietylle ajanjaksolle
+adminID 2	Laitteista kolme on pakastimia, joille on säädetty omat lämpötila-arvot	Ratkaistu adminID 7
+adminID 3	Loput kuusi ovat jääkaappeja, joille on säädetty lämpötila-arvot käyttötarkoituksen mukaan	Ratkaistu adminID 7 ja adminID 4
+adminID 5	Jaettu myös ryhmittelyn mukaisesti	Ratkaistu adminID 4
+adminID 6	Seijan merkittäväksi on sovittu kylmäkön käytössä olevat kylmälaitteet, eli kaksi pakastinta ja kaksi kylmälaitetta	Ratkaistu adminID 2
+adminID 10	Sijainen suorittaa Seijalle määrätyt tehtävät	Ratkaistu adminID 14
+
+
+
+Sovelluksen käyttäjät
+Lähde	Vaatimus	Ratkaisu
+userID 5	Lämpötiloja merkitään kaavakkeelle toisinaan jälkeenpäin, jos ne ovat jääneet merkitsemättä	Sovellus ei salli käyttäjän kirjaavan lämpötiloja takautuvasti
+userID 6	Numeroiden näpyttely kosketusnäytölle on hankalaa etenkin, jos teksti on pientä, pelkään tekeväni virheitä	Käyttöliittymä sisältää jQuery komponentteja, joita käyttämällä lämpötilat voidaan säätää yhdellä kädellä liukukytkimillä. Liukukytkin sisältää oletusarvona laitteen vaatiman vähimmäisarvon tai edellisessä kirjauksessa suoritetun lämpötilan
+userID 3	Järjestelmä kirjaa tietojen lähettäjän	Jokaisella käyttäjällä on tietokannassa yksilöity tunnus, joka viittaa todelliseen henkilöön
+userID 7	Tarvitsen mielestäni opastusta ohjelman käyttöön, en omaksu helposti uusia asioita	Sovelluksen käyttöliittymä sisältää linkin käyttöohjeisiin
+userID 2	Arkiaamuna kello 7.00	Lämpötila-arvot kirjataan määrätyllä kellonaikajaksolla, mieluimmin heti työvuoron alkaessa
+userID 4	Tunnollisesti täyttänyt vaaditut tehtävät	Mahdollisuus ohjelmoida sovellukseen ominaisuus, joka laskee jokaisen käyttäjän kirjaamiskerrat ja pitää niistä tilastoa, käytettävissä vain Admin panelin välityksellä 
+userID 1	Sisällyttää käyttöohjeita	Ratkaistu userID 7
+
+
+
+
+
