@@ -1,5 +1,5 @@
  
-Käyttötapaukset
+Käyttötapaukset edited
 Tämän dokumentin tuloksena johdetaan seuraava asiakirja, joka on nimeltään: Vaatimusmäärittely.docx
 Käyttötapaus ID: Sovelluksen kehittämiseen rakennettavat vaatimukset jaetaan kolmeen ryhmään, joista userID edustaa käyttäjän näkökulmasta esitettyjä vaatimuksia, adminID  pääkäyttäjän näkökulmasta esitettyjä vaatimuksia ja devID sovelluksen kehittäjätiimin näkökulmasta vaatimuksia, joita sovellukseen tulee sisällyttää sen toimivuuden ja käytettävyyden kannalta.
 	userID = (userID)
