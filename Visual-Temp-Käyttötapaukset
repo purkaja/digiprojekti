@@ -1,0 +1,71 @@
+ 
+Käyttötapaukset
+Tämän dokumentin tuloksena johdetaan seuraava asiakirja, joka on nimeltään: Vaatimusmäärittely.docx
+Käyttötapaus ID: Sovelluksen kehittämiseen rakennettavat vaatimukset jaetaan kolmeen ryhmään, joista userID edustaa käyttäjän näkökulmasta esitettyjä vaatimuksia, adminID  pääkäyttäjän näkökulmasta esitettyjä vaatimuksia ja devID sovelluksen kehittäjätiimin näkökulmasta vaatimuksia, joita sovellukseen tulee sisällyttää sen toimivuuden ja käytettävyyden kannalta.
+	userID = (userID)
+	adminID = (adminID)
+	devID = (devID)
+Omavalvonta
+”Omavalvonnaksi kutsutaan toimijan omaa järjestelmää (devID 1), jolla toimija pyrkii varmistamaan, että elintarvikkeet ovat turvallisia ja elintarvikelainsäädännön vaatimusten mukaisia. Toimijan on tunnistettava omaan toimintaansa ja käsittelemäänsä elintarvikkeeseen liittyvät elintarviketurvallisuutta vaarantavat tekijät ja huolehdittava niiden hallinnasta”, (ruokavirasto.fi)
+Ravintolayritysten itse laatima suunnitelma omavalvonnan toteuttamisesta ja lämpötilojen valvonnasta perustuu elintarvikelaissa 23/2006 säädettyihin arvoihin, jonka perusteella toimija toteuttaa omavalvonnan mukaista lämpötilojen seurantaa. Ruokatieto tarjoaa internetsivuillaan selkeän kuvauksen lämpötiloista elintarvikkeiden käsittelyssä. https://www.ruokatieto.fi/ruokakasvatus/lupa-kokata-elintarvikehygienian-perusteet/elintarvikkeiden-hygieeninen-kasittely/lampotilat-elintarvikkeiden-kasittelyssa
+
+Ravintolan tuotantokäytössä olevien laitteiden lämpötilojen kirjaaminen omavalvontaan
+Ravintolatiloissa tapahtuvaan tuotantolaitteiden lämpötilojen kirjausta toteutetaan pääsääntöisesti kolmella erilaisella menetelmällä.
+1.	Automaattinen kirjaus: Lämpösensorien välittämien lämpötilatietojen automaattinen rekisteröiminen
+2.	Analoginen kirjaus: Lämpötilatietojen kirjaaminen kynällä lomakkeelle, perustuen laitteessa olevan kiinteän tai irrallisen mittarin antamaan lukemaan
+3.	Kirjaus suoraan sovelluksesta (devID 2): Harvinaisessa käytössä oleva lämpötilojen kirjaaminen mobiililaitteella suoraan tietokantaan
+
+Käytettävien menetelmien edut ja haitat
+Automaattinen kirjaus
+Edut: Lämpötilojen monitorointi on ympärivuorokautista ja se voidaan liittää hälytysjärjestelmään. Valvonta voidaan määrittää suoritettavaksi tarkoilla aikajaksoilla, mikä mahdollistaa tarkimman analytiikan tuotantolaitteiden toiminnan seuraamiseksi.
+Haitat: Palvelun käyttöön tarvittava laitteisto on kallis, lisäksi ohjelmiston käytöstä maksetaan erillistä lisenssimaksua. 
+Päätelmä: Automaattinen kirjaus sopii parhaiten suurten tuotantotilojen seurantaan, missä lämpötilojen heilahduksista syntyvä vahinko ylittää selvästi tarvittavan laitteiston ja ohjelmistolisenssien kustannukset.
+Analoginen kirjaus
+	Edut: Halvin ratkaisu, ei vaadi erityistä osaamista
+Haitat: tallennettujen tietojen eheys ja todenperäisyys ei ole varmalla tasolla, tietoja voidaan muuttaa jälkikäteen. Havaittujen ongelmien seuranta jälkikäteen on työlästä. 
+Päätelmä: Laajimmin käytössä oleva menetelmä tuotantolaitteiden lämpötilojen kirjaamiseen omavalvontarekisteriin. Sopii käytettäväksi suuriin ja pieniin tuotantotiloihin, vaatii kuitenkin käyttäjiltä vahvaa sitoutumista ja selkeää työn- ja tehtävänkuvissa määriteltyjä rooleja laitesegmenttien lämpötilojen kirjaamisesta.
+
+Kirjaus suoraan sovelluksesta
+Edut: Edullinen ja muokattavissa (devID 3), keskitetty tietokanta (devID 4), joka on yrittäjän omassa hallinnassa. Nopea haku tietokannasta (devID 5), ongelmakohtien nopea selvitys. Mahdollisuus hakea tietoja sijainnista riippumatta (devID 6). Modulaarinen rakenne (devID 7) mahdollistaa sovelluksen laajentamisen käsittämään kaikkea ravintola- ja cateringyrityksen omavalvonnan kirjaamiseen tarvittavia elementtejä. Ohjelmaan voidaan sisällyttää käyttöohjeita (userID 1) ja tiedot käytettävistä tarvikkeista ja kemikaaleista (adminID 1).
+Haitat: Käyttäjien muutosvastarinta, käyttäjien roolitus ja roolien määrittäminen järjestelmään (adminID 2). Ohjelmiston kehittämiseksi valittavan sovellusympäristön soveltuvuus laitteiston skaalautuvuuteen (devID 8)  paikallisen järjestelmänvalvojan toimesta.
+Päätelmä: Sovellus sopii käytettäväksi kaikkiin niihin tuotantotiloihin, joissa on tällä hetkellä käytössä analogiseen kirjaukseen perustuva menetelmä. Sovellus on tällä hetkellä vielä varhaisessa kehitysvaiheessa, joten sen käyttöönottoon ja käytettävyyteen ei ladata niin suurta painoarvoa kuin analogiseen ja automaattisesti tapahtuvaan lämpötilojen kirjaamiseen.
+	
+Käyttäjätarinat lämpötilojen kirjaamisesta
+Esimerkin tuotantotiloissa on yhdeksän kappaletta laitteita (devID 9), joiden lämpötilat tulee kirjata rekisteriin jokaisena työpäivänä (devID 10), yleisesti aamulla työvuoron alkaessa. Laitteista kolme on pakastimia, joille on säädetty omat lämpötila-arvot (adminID 2). ja loput kuusi laitetta ovat jääkaappeja, joille on säädetty lämpötila-arvot käyttötarkoituksen mukaan (adminID 3).. Kylmälaitteiden lämpötilat ovat alhaisimmillaan ovien ollessa suljettuina, tästä syystä lämpötilat kirjataan ylös mahdollisimman pian, ennen laitteiden avaamista. Laitteet on ryhmitelty yleisesti sen mukaan, kuka laitteita käyttää (adminID 4). ja kirjaukset sen myötä on jaettu myös ryhmittelyn mukaisesti. (adminID 5).
+Käyttäjätarina analoginen kirjaus
+Kylmäkkö Seija kuhan työvuoro alkaa jokaisena arkiaamuna kello 7.00 (userID 2)  Seija on tunnollinen työntekijä ja hän saapuu työpaikalleen hyvissä ajoin siististi puettuna ennen työvuoron alkua. Seijan merkittäväksi on sovittu kylmäkön käytössä olevat kylmälaitteet, eli kaksi pakastinta ja kaksi kylmälaitetta (adminID 6).
+Jokaisessa laitteessa on digitaalinen näyttö, joka ilmaisee kussakin laitteessa olevan sen hetkisen lämpötilan (devID 11). Lämpötilojen kirjaukseen käytettävät lomakkeet ovat muovitaskussa kylmälaitteen ovessa ja jokaiselle laitteelle on merkitty yksilöivä tunnus (devID 12). Joku on kuitenkin jälleen kerran ottanut omaan käyttöönsä kynän, joka on tarkoitettu lämpötilojen kirjaamiseen ja kynän oletetaan olevan aina paikallaan kaavakkeiden yhteydessä. Seijalla menee hetki uuden toimivan kynän etsimisessä.
+Seija merkitsee kylmälaitteiden lämpötilat seuraavasti:
+1.	Pakastin, jossa säilytetään leivonnaisia: -21 astetta (vähimmäislämpötila -18) 
+2.	Pakastin, jossa säilytetään ns. käsitavaroita: -19 astetta (vähimmäislämpötila -18)
+3.	Kylmäkaappi, joka on käsitavarakaappi, mutta jossa kuitenkin säilytetään myös helposti pilaantuvia elintarvikkeita: +4 astetta (vähimmäislämpötila +6)
+4.	Vetokaappi, jossa säilytetään esivalmistettuja tuotteita, myös herkästi pilaantuvia: +5 astetta (vähimmäislämpötila +6) (adminID 7)
+Siinä tapauksessa, että kylmälaitteen lämpötila ei saavuta sille asetettua arvoa, Seija merkitsee lomakkeeseen todellisen lämpötilan ja erilliseen sarakkeeseen tulee huomautus siitä, että kylmälaite ei saavuta sille asetettuja lämpötila-arvoja.  (adminID 8)Seija käy aistinvaraisesti läpi kaapin sisällön ja pyrkii arvioimaan sen ajan, jonka elintarvikkeet ovat olleet liian lämpimässä laitteessa. Herkästi pilaantuvat elintarvikkeet tulee hävittää, jos ne eivät ole olleet säilytettynä niille vaaditussa ympäristössä.
+Lista on tyypillisesti kuukausikohtainen (adminID 9) ja listan täyttyessä tai sen määräajan jälkeen, Seija palauttaa täytetyn kaavakkeen omavalvontakansioon ja ottaa tilalle uuden. Uutta tyhjää lomaketta ei ole välttämättä saatavilla, eikä Seija tiedä tiedostopolkua (devID 13).  järjestelmässä olevaan omavalvontakansioon, josta voi kopioida kaavakkeita tarpeen mukaan. Tässä tapauksessa Seija odottaa esimiehen saapumista paikalle ja hän pyytää tältä uutta lomaketta. Seija toistaa saman rutiinin jokaisen työpäivän alkaessa ja Seijan ollessa lomalla tai estynyt, sijainen suorittaa Seijalle määrätyt tehtävät (adminID 10).
+ 
+
+Sovelluksen käyttöliittymät
+Visual-Temp sovellus sisältää kaksi käyttöliittymää (devID 14), joista ensimmäinen on tarkoitettu lämpötilojen kirjaukseen (devID 15) ja tallentamiseksi tietokantaan ja toinen Admin panel on tarkoitettu tallennettujen tietojen hakuun tietokannasta ja tietojen mahdolliseen editoimiseen (devID 16), Admin Panel vaatii käyttäjältä käyttöoikeudet, jotka todennetaan kirjautumalla palveluun käyttäjätunnuksella ja salasanalla (devID 17).
+Käyttäjätarinat 
+Lämpötilojen kirjaaminen tietokantaan	Kylmäkkö Seija Kuha ID: 1001
+
+	Nykyinen järjestelmä on mielestäni riittävä, en haluaisi opetella uusia vaikeita asioita.
+	Mielestäni on hyvä, että järjestelmä kirjaa tietojen lähettäjän (userID 3)  , sillä olen tunnollisesti täyttänyt vaaditut tehtävät (userID 4)  , eivätkä kaikki työntekijät suinkaan niin tee.
+	Lämpötilamerkintöjä kirjataan kaavakkeelle toisinaan jälkeenpäin, jos ne ovat jääneet merkitsemättä. (userID 5)  
+	Numeroiden näpyttely kosketusnäytölle on hankalaa etenkin, jos teksti on pientä, pelkään tekeväni virheitä (userID 6)  
+	Tarvitsen mielestäni opastusta ohjelman käyttöön, en omaksu helposti uusia asioita. (userID 7)  
+
+
+Admin Panel tietojen haku ja käsittely	Keittiöpäällikkö ID: 1002
+
+	Hyvä nyt näen ovatko kaikki suorittaneet kirjaukset sovitulla tavalla (adminID 11)
+	Mitä jos kirjauksia on jäänyt tekemättä (adminID 12)
+	Haluan käyttäjätilin myös lämpötilojen kirjaukseen, jotta voin itse suorittaa niitä, esimerkiksi sairauslomien varalta. (adminID 13)
+	Onko tilapäisellä henkilökunnalla (extra) mahdollisuus kirjata tietoja, usein syntyy tilanteita, jossa vakituista henkilökuntaa ei ole paikalla (adminID 14)
+	Hyvä että kaikki tiedot ovat nopeasti saavutettavissa, Oiva-tarkastajalta menee paljon aikaa hänen selatessa kansiossa olevia lomakkeita, niiden ollessa pahimmillaan väärässä järjestyksessä (adminID 15)
+
+
+Project Backlog: https://trello.com/b/fRXxT5Ou/digiprojekti-dig4ta022-3002
+	
+Lähteet:
+Ruokavirasto, omavalvonta. Luettavissa https://www.ruokavirasto.fi/yritykset/elintarvikeala/elintarvikealan-yhteiset-vaatimukset/omavalvonta/ luettu 12.4.2019
