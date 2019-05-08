@@ -450,7 +450,7 @@
 
 <!-- Container (Contact Section) -->
 <div id="contact" class="container-fluid bg-grey">
-  <h2 class="text-center">KIRJAUDU</h2>
+  <!--<h2 class="text-center">KIRJAUDU</h2>-->
   <div class="row">
     <div class="col-sm-5">
       <p>Ota yhteytta, vastaamme vuorokauden sisällä</p>
@@ -459,23 +459,40 @@
       <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
       <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p>
     </div>
+    <!--
     <div class="col-sm-7 slideanim">
       <div class="row">
+        <form id="loginLomake"></form>
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Käyttäjätunnus" type="text" required>
+          <input class="form-control" id="email" name="email" placeholder="Käyttäjätunnus" type="text" required>
         </div>
         <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Salasana" type="email" required>
+          <input class="form-control" id="pwd" name="pwd" placeholder="Salasana" type="text" required>
         </div>
+      </div>
+      -->
+      <div role="main" class="ui-content ui-body-a">
+        <h1>Visual Temp Admin panel</h1>
+        <p id="tunnus">Kirjaudu järjestelmään</p>
+        <form id="loginLomake">
+        <!--<label for="email">Email:</label>-->
+        <input type="text" name="email" id="email" placeholder="Käyttäjätunnus">
+        <!--<label for="pwd">Pwd:</label>-->
+        <input type="text" name="pwd" id="pwd" placeholder="Salasana">
+        <button onclick="myFunction()" class="ui-btn" id="kirjaudu">Kirjaudu</button>
+        </form>
       </div>
       <!--
       <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br> -->
+      <!--
       <div class="row">
         <div class="col-sm-12 form-group">
-          <button class="btn btn-default pull-right" type="submit">Lähetä</button>
+          <button onclick="myFunction()" class="btn btn-default pull-right" type="submit" id="kirjaudu">Lähetä</button>
         </div>
       </div>
+      -->
     </div>
+  </form>
   </div>
 </div>
 
@@ -488,7 +505,45 @@
   </a>
   <p>This website is refactored and modified from <a href="https://www.w3schools.com/bootstrap/trybs_theme_company_full.htm" title="Visit w3schools">W3Schools Company template</a> by Vesa Heinonen</p>
 </footer>
-
+<script>
+  $(document).on("pagecontainershow", function( event, ui ) {	
+    var toPage = ui.toPage[0].id; 
+    if(toPage=="tokasivu"){				
+      if(sessionStorage.name==undefined){
+        document.location="#etusivu";
+      }
+      $("#kirjautuneena").html("Kirjautuneena " + sessionStorage.name);	
+    }			
+  });	
+  
+  function myFunction(){
+    console.log("hei vaan");
+    if($("#email").val().length>0&&$("#pwd").val().length>0){	
+      console.log("kentät toimii");			
+      $.ajax({
+        type: 'POST',
+        data: $("#loginLomake").serialize(),
+        url: 'http://higher.fi/backend/selectLogin.php',
+        success: function(data){	
+          console.log(1);
+          var tiedot = JSON.parse(data);	
+          if(tiedot.length>0){
+            console.log(tiedot[0].name);
+            sessionStorage.name=tiedot[0].name;							
+            document.location="http://www.google.fi";
+          }else{
+            console.log("Käyttäjää ei tunnisteta.")
+            document.location="#tunnus";
+          }						
+        },
+        error: function(){	
+          console.log(2);											
+        }
+      });				
+    }			
+  }
+  
+  </script>
 <script>
 $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
@@ -525,6 +580,7 @@ $(document).ready(function(){
   });
 })
 </script>
+
 
 </body>
 </html>
